@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>她的名字：{{hername}}</h1>
+        <h1>他的名字：{{hisname}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false //组织vue在启动时生成生产提示。
+
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                hername:'小花',
+                hisname:'小强'
+            }
+        })
+
+
+    </script>
+</body>
+</html>

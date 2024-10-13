@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_姓名案例_插值语法实现</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script> -->
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        姓：<input type="text" v-model="firstName"><br/><br/>
+        名：<input type="text" v-model="lastName"><br><br>
+        <!-- slice(index,step)，截取，不包含step -->
+        全名：<span>{{fullName}}</span>
+    </div>
+
+    <script type="text/javascript">
+        // Vue.config.productionTip = false //阻止vue在启动时生成生产提示。
+        // Vue.config.productionTip=false;
+        
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                firstName:'张',
+                lastName:'三'
+            },
+            computed:{
+                fullName: {
+                    // get：当读取fullName的时候，get就会被调用，且返回值就是fullName的值
+                    // get什么时候被调用？1.初次读取fullName时。2.fullName所依赖的数据发生改变时
+                    get(){
+                        return this.firstName + '-' + this.lastName
+                    },
+                    // set什么时候被调用？当fullName值被修改的时候被调用
+                    set(value){
+                        const arr = value.split('-')
+                        this.firstName = arr[0] 
+                        this.lastName = arr[1] 
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
